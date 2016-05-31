@@ -38,9 +38,15 @@ qplot(x = hwy,
         data = mpg,
         facets= drv~.,
         binwidth= 2,
-        color = drv
-        )
+        color = drv,
+      
+                )
 
 ## Densidad
 qplot(x = hwy, data = mpg, geom= "density")
 qplot(x = hwy, data = mpg, geom= "density", color = drv)
+
+#Gráficos complejos: Composición -Geom
+ggplot(mpg, aes(displ, hwy, color = class)) + geom_point()
+
+
