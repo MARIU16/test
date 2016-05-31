@@ -15,3 +15,4 @@ getRow <- function(log = "") {
   
   return(df)
 }
+
