@@ -16,3 +16,8 @@ getRow <- function(log = "") {
   return(df)
 }
 
+#separar en filas
+strsplit (x=htmlCode, split=" ")
+
+#cabecera
+head(htmlCodena)
