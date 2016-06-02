@@ -51,3 +51,7 @@ strsplit (x=dff, split=" ")
 
 #contenido de la columna
 l[6]
+
+#Arregla tablas cpon valores que nos interesan
+tabla1<-data.frame(protocolo,ip,puerto)
+protocolo<-l[,2]
