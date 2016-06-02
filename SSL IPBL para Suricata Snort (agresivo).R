@@ -129,3 +129,6 @@ psa<-p[,6]
 tabla2<-data.frame(de1,de2,pa,psa)
 View(tabla2)
 }
+
+#convertir ip a decimal función net.basic
+ipdec<-lapply(as.character(tabla1[,2]), function (x) net.basic::ip2long(ip=x)))
