@@ -64,3 +64,12 @@ puerto<-l[,7]
 #luego unimos cada variable y la convertimos en tabla
 tabla1<-data.frame(protocolo,ip,puerto)
 
+#creando función de tabla final
+function(protocolo,ip,puerto) {
+  l <- read.table("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules", header = TRUE, sep = " ")
+  ip<-l[,6]
+  protocolo<-l[,2]
+  puerto<-l[,7]
+  tabla1<-data.frame(protocolo,ip,puerto)
+  View(tabla1)
+}
