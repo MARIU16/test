@@ -73,7 +73,7 @@ tabla1<-data.frame(protocolo,ip,puerto)
 #creando función de tabla final
 tablafinal<-function(protocolo,ip,puerto) {
   l <- read.table("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules", header = TRUE, sep = " ")
-  ip<-l[,6]
+  ip<-substring(as.character(l[,6]),2,nchar(as.character(l[,6]))-1)
   protocolo<-l[,2]
   puerto<-l[,7]
   tabla1<-data.frame(protocolo,ip,puerto)
