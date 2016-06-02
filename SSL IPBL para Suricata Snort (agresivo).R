@@ -136,3 +136,11 @@ ipdec<-lapply(as.character(tabla1[,2]), function (x) net.basic::ip2long(ip=x)))
 #comparar pais
 compare <- ((tabla2$de1 <= tabla1$ipdec[1]) & (tabla1$ipdec[1] <= tabla2$de2))
 any(compare)
+
+#mas pruebas con compare
+compare <- ((tabla2$de1 <= tabla1$ipdec[1]) & (tabla1$ipdec[1] <= tabla2$de2))
+any(compare)
+pais<-tabla2[compare,]
+pais2<-pais[,4]
+pais2
+compare <- lapply(tabla1$ipdec, function (x) ((tabla2$de1 <= x) & (x <= tabla2$de2)))
