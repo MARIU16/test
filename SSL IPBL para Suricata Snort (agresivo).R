@@ -1,3 +1,9 @@
+##Cada elemento de la lista asocia un certificado a las operaciones maliciosos en el que los atacantes utilizaron. 
+##Los abusos incluyen redes de bots , campañas de malware y malware bancario.
+##Muchas entradas están asociados con populares redes de bots y malware- basados 
+##​​ataques, incluyendo Zeus ,  Shylock  y  parentescos .
+##https://www.abuse.ch/?p=8180
+
 ## Lectura de una pagina web
 con <- url("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules")
 htmlCode <- readLines(con)
