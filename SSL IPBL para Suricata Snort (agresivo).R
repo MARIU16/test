@@ -79,3 +79,7 @@ tablafinal<-function(protocolo,ip,puerto) {
   tabla1<-data.frame(protocolo,ip,puerto)
   View(tabla1)
 }
+install.packages("net.basic")
+
+#convertir ip en decimal
+k <- lapply(ip, function(x) net.basic::ip2long(x))
