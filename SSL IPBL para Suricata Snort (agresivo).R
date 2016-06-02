@@ -48,3 +48,6 @@ SC<-dfInfo[-c(1:7), ]
 
 #separar en filas
 strsplit (x=dff, split=" ")
+
+#contenido de la columna
+l[6]
