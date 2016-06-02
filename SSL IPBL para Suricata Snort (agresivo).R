@@ -132,3 +132,7 @@ View(tabla2)
 
 #convertir ip a decimal función net.basic
 ipdec<-lapply(as.character(tabla1[,2]), function (x) net.basic::ip2long(ip=x)))
+
+#comparar pais
+compare <- ((tabla2$de1 <= tabla1$ipdec[1]) & (tabla1$ipdec[1] <= tabla2$de2))
+any(compare)
