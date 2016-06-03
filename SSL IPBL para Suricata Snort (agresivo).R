@@ -1,7 +1,8 @@
-##Cada elemento de la lista asocia un certificado a las operaciones maliciosos en el que los atacantes utilizaron. 
-##Los abusos incluyen redes de bots , campañas de malware y malware bancario.
-##Muchas entradas están asociados con populares redes de bots y malware- basados 
-##​​ataques, incluyendo Zeus ,  Shylock  y  parentescos .
+##Cada elemento de la lista asocia un certificado a las operaciones maliciosas los atacantes utilizaron. 
+##Los abusos incluyen redes de bots, campañas de malware y malware bancario.
+##Muchas entradas están asociados con populares redes de bots y malware- basados en 
+##ataques, incluyendo Zeus,  Shylock  y  parentescos.
+## la fuente origen se actualiza cada 15 minutos.
 ##https://www.abuse.ch/?p=8180
 ## Objetivo: cruzar listas de ip's maliciosas con rangos de ip por paises para determinar focos de origenes.
 ## Las listas de Ip's maliciosas pueden ser usadas para comparar con cualquier log de ip y saber quien visita una página, entre otras.
