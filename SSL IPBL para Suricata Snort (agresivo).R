@@ -3,6 +3,8 @@
 ##Muchas entradas están asociados con populares redes de bots y malware- basados 
 ##​​ataques, incluyendo Zeus ,  Shylock  y  parentescos .
 ##https://www.abuse.ch/?p=8180
+## Objetivo: cruzar listas de ip's maliciosas con rangos de ip por paises para determinar focos de origenes.
+## Las listas de Ip's maliciosas pueden ser usadas para comparar con cualquier log de ip y saber quien visita una página, entre otras.
 
 ## Lectura de una pagina web
 con <- url("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules")
