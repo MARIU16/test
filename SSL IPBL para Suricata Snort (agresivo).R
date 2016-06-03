@@ -145,6 +145,10 @@ pais2<-pais[,4]
 pais2
 compare <- lapply(tabla1$ipdec, function (x) ((tabla2$de1 <= x) & (x <= tabla2$de2)))
 
+## convertir ips a decimal, almaceno en variable ipd, luego la funcion ip_to_numeric(mi variabledonde estan las ip)
+library(iptools)
+ipd<-ip_to_numeric(ip)
+
 ##con las ips en decimal :)
 ##funciones finales 
 tablafinal<-function(protocolo,ip,puerto) {
