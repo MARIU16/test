@@ -16,16 +16,10 @@ url <- "https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules"
 html <- htmlTreeParse(url, useInternalNodes=TRUE)
 xpathSApply(html, "//font", xmlValue)
 
-getRow <- function(log = "") {
-  df <- data.frame()
-  
-  return(df)
-}
-
 #separar en filas
 strsplit (x=htmlCode, split=" ")
 
-#cabecera
+#Ver cabecera
 head(htmlCodena)
 
 #eliminar filas
@@ -34,7 +28,7 @@ htmlCode[-8]
 #Separar en columnas
 dfInfo <- within(data=df, P<-data.frame (do.call('rbind',strsplit(as.character(a)," ",fixed=TRUE))))
 
-#tambien sirve y está mejor
+#tambien sirve y está mejor. Es la que al final usamos
 l <- read.table("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules", header = TRUE, sep = " ")
 
 #probar que sale la columna seleccionada
@@ -58,7 +52,7 @@ strsplit (x=dff, split=" ")
 #contenido de la columna
 l[6]
 
-#Arregla tablas cpon valores que nos interesan
+#Arregla tablas con valores que nos interesan
 tabla1<-data.frame(protocolo,ip,puerto)
 protocolo<-l[,2]
 
@@ -81,18 +75,20 @@ tablafinal<-function(protocolo,ip,puerto) {
 }
 install.packages("net.basic")
 
-#convertir ip en decimal
+#convertir ip en decimal Uso de la función net.basic
 k <- lapply(ip, function(x) net.basic::ip2long(x))
 
+#Queremos cruzar nuestas ip maliciosas con el listado de ip por paises 
 #descargar listado de ip por paises
  pais<-download.file(url="http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip", destfile="paises.zip")
 
 #descargar archivo
  unzip("paises.zip")
-#ordenar archivo descargado
+#ordenar archivo descargado volvemos a usar el read.table (es la mejor)
 > p <- read.table("GeoIPCountryWhois.csv",header = TRUE, sep = ",")
 > View(p)
 
+#más pruebas y funcionó!
 pais<-download.file(url="http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip", destfile="paises.zip")
  unzip("paises.zip")
 > p <- read.table("GeoIPCountryWhois.csv",header = TRUE, sep = ",")
@@ -104,7 +100,7 @@ pais<-download.file(url="http://geolite.maxmind.com/download/geoip/database/GeoI
  tabla2<-data.frame(de1,de2,pa,psa)
 > View(tabla2
 
-##funciones finales
+##funciones finales 
 tablafinal<-function(protocolo,ip,puerto) {
   l <- read.table("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules", header = TRUE, sep = " ")
   ip<-substring(as.character(l[,6]),2,nchar(as.character(l[,6]))-1)
@@ -130,6 +126,7 @@ tabla2<-data.frame(de1,de2,pa,psa)
 View(tabla2)
 }
 
+#Pruebas para poder ahora obtener resultado cruzando ip's
 #convertir ip a decimal función net.basic
 ipdec<-lapply(as.character(tabla1[,2]), function (x) net.basic::ip2long(ip=x)))
 
