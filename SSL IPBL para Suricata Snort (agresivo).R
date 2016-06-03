@@ -144,3 +144,33 @@ pais<-tabla2[compare,]
 pais2<-pais[,4]
 pais2
 compare <- lapply(tabla1$ipdec, function (x) ((tabla2$de1 <= x) & (x <= tabla2$de2)))
+
+##con las ips en decimal :)
+##funciones finales 
+tablafinal<-function(protocolo,ip,puerto) {
+  l <- read.table("https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.rules", header = TRUE, sep = " ")
+  ip<-substring(as.character(l[,6]),2,nchar(as.character(l[,6]))-1)
+  ip_to_numeric(ip)
+  ipd<-ip_to_numeric(ip)
+  protocolo<-l[,2]
+  puerto<-l[,7]
+  tabla1<-data.frame(protocolo,ip,puerto,ipd)
+  View(tabla1)
+  nrow(tabla1)
+}
+
+
+tablapais<-function(de1,de2,pa,psa){
+  
+  download.file(url="http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip", destfile="paises.zip")
+  unzip("paises.zip")
+  p <- read.table("GeoIPCountryWhois.csv",header = TRUE, sep = ",")
+  View(p)
+  de1<-p[,3]
+  de2<-p[,4]
+  pa<-p[,5]
+  psa<-p[,6]
+  tabla2<-data.frame(de1,de2,pa,psa)
+  View(tabla2)
+}
+
