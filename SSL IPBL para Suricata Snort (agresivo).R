@@ -148,6 +148,7 @@ compare <- lapply(tabla1$ipdec, function (x) ((tabla2$de1 <= x) & (x <= tabla2$d
 ## convertir ips a decimal, almaceno en variable ipd, luego la funcion ip_to_numeric(mi variabledonde estan las ip)
 library(iptools)
 ipd<-ip_to_numeric(ip)
+#mas info en https://cran.r-project.org/web/packages/iptools/iptools.pdf
 
 ##con las ips en decimal :)
 ##funciones finales 
