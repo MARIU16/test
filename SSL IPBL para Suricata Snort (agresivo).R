@@ -211,4 +211,7 @@ blacklist_countries<-function(){
   pais<-data.frame(pais)
   tabla1<-cbind(tabla1,pais)
 }
-
+##Sumar por pais
+> tt<-summary.factor(pais, data=tabla1)
+> total_pais<-data.frame(tt)
+> View(total_pais)
