@@ -188,7 +188,7 @@ get_blacklist_abuse<-function() {
   protocolo<-l[,2]
   puerto<-l[,7]
   tabla1<-data.frame(ip_decimal,ip,protocolo,puerto, stringsAsFactors = FALSE)
-  }
+}
 
 get_ip_countries<-function(){
   download.file(url="http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip", destfile="paises.zip")
@@ -204,14 +204,19 @@ get_ip_countries<-function(){
 
 blacklist_countries<-function(){
   pais<-matrix(nrow = nrow(tabla1),ncol = 1)
+  paisl<-matrix(nrow = nrow(tabla1),ncol = 1)
   for (i in 1:nrow(tabla1)){
     compare <- ((tabla2$de1 <= tabla1$ip_decimal[i]) & (tabla1$ip_decimal[i] <= tabla2$de2))
     pais[i,1]<-tabla2[compare,4]
+    paisl[i,1]<-tabla2[compare,3]
   }
-  pais<-data.frame(pais)
-  tabla1<-cbind(tabla1,pais)
+  paisf<-data.frame(pais, paisl)
+  tabla1<-cbind(tabla1,paisf)
 }
 ##Sumar por pais fuente: https://view.officeapps.live.com/op/view.aspx?src=http://personales.unican.es/gonzaleof/Itop/jaime/Pract_1_R.doc
-> tt<-summary.factor(pais, data=tabla1)
-> total_pais<-data.frame(tt)
-> View(total_pais)
+tt<-summary.factor(pais, data=tabla1)
+total_pais<-data.frame(tt)
+View(total_pais)
+
+#latitud y longitud
+download.file("https://www.worlddata.info/downloads/capitals.csv",destfile="./latlon")
