@@ -1,0 +1,22 @@
+library(ggmap)
+
+# ubico donde nací
+unizar <- geocode('caracas, venezuela')
+
+# obtengo un mapa
+map.unizar <- get_map( location = as.numeric(unizar),
+                       color = "color",
+                       maptype = "roadmap",
+                       scale = 2,
+                       zoom = 16)
+
+# lo represento
+ggmap(map.unizar) 
+
+# le añado puntos
+ggmap(map.unizar) + geom_point(aes(x = lon, y = lat),
+                               data = unizar, colour = 'red',
+                               size = 4)
+
+
+http://apuntes-r.blogspot.com.es/2015/10/mapas-con-ggplot-y-ggmap.html
